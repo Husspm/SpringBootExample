@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<html>
+    <body>
+        <h1>Hello World</h1>
+        <form action = "localhost:8080/api/v1/person" method="POST" onsubmit = "submitForm()">
+            <label>Enter your name</label>
+            <input type ="text" id = "name">
+            <input type = "submit" value = "Submit">
+        </form>
+    </body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type = "text/javascript">
+
+    function submitForm() {
+        event.preventDefault();
+        console.log("Submit pressed");
+        let name = document.forms[0][0].value;
+        let nameObject = {"name" : name };
+        let nameToSend = JSON.stringify(nameObject);
+        console.log(nameObject);
+        $.ajax({
+        origin: "http://localhost:8080",
+        type: "POST",
+        url: "http://localhost:8080/api/v1/person",
+        data: nameObject,
+        success: function(){},
+        dataType: "json",
+        contentType : "application/json"
+});
+        }
+
+</script>
