@@ -5,6 +5,7 @@ import com.hussey.springBootServer.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+//import javax.annotation.Resource;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -44,6 +45,10 @@ public class PersonController {
     public Person getPersonByName (@PathVariable("name") String name) {
         return personService.getPersonByName(name)
                 .orElse(null);
+    }
+    @GetMapping(path = "newPage/new")
+    public String getIndexPage() {
+        return "index";
     }
     @DeleteMapping(path = "{id}")
     public void deletePersonById(@PathVariable("id") UUID id) {
